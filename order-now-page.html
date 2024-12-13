@@ -1,0 +1,219 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Now</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .cake-details img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .cake-details h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .cake-details p {
+            font-size: 18px;
+            color: #777;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .input-group input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+        }
+        .radio-group input {
+            margin-right: 8px;
+        }
+        .total-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #28a745;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(2px);
+        }
+        footer {
+            background: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+        footer .logo img {
+            max-width: 100px;
+            margin-bottom: 20px;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+        footer .logo img:hover {
+            filter: grayscale(0%);
+        }
+        footer .quick-links a, footer .contact-info a {
+            color: #333;
+            text-decoration: none;
+            margin: 10px 0;
+            display: block;
+            transition: color 0.3s;
+        }
+        footer .quick-links a:hover, footer .contact-info a:hover {
+            color: #007bff;
+        }
+        footer .social-icons a {
+            font-size: 24px;
+            color: #333;
+            margin: 0 12px;
+            transition: color 0.3s, transform 0.3s;
+        }
+        footer .social-icons a:hover {
+            color: #007bff;
+            transform: translateY(-4px);
+        }
+        footer .credit {
+            font-size: 14px;
+            color: #777;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cake-details">
+            <img id="cakeImage" alt="Cake Image" />
+            <h2 id="cakeName"></h2>
+            <p id="cakePrice"></p>
+        </div>
+
+        <div class="input-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="input-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="Enter your phone number" required>
+        </div>
+
+        <div class="input-group">
+            <label for="kg">Select Weight (Kg)</label>
+            <div class="radio-group">
+                <label><input type="radio" name="kg" value="1" checked> 1</label>
+                <label><input type="radio" name="kg" value="1.5"> 1.5</label>
+                <label><input type="radio" name="kg" value="2"> 2</label>
+                <label><input type="radio" name="kg" value="2.5"> 2.5</label>
+                <label><input type="radio" name="kg" value="3"> 3</label>
+                <label><input type="radio" name="kg" value="3.5"> 3.5</label>
+                <label><input type="radio" name="kg" value="4"> 4</label>
+                <label><input type="radio" name="kg" value="4.5"> 4.5</label>
+                <label><input type="radio" name="kg" value="5"> 5</label>
+            </div>
+        </div>
+
+        <div class="total-price" id="totalPrice">Total Price: ₹0</div>
+
+        <button id="orderButton">Order Now</button>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const cakeName = urlParams.get('productName');
+        const cakeImage = urlParams.get('image');
+        const cakePrice = parseInt(urlParams.get('price')) || 200;
+
+        // Populate cake details
+        document.getElementById('cakeName').textContent = cakeName;
+        document.getElementById('cakePrice').textContent = `Price: ₹ ${cakePrice} / Kg`;
+        document.getElementById('cakeImage').src = cakeImage;
+
+        // Update total price based on selected kg
+        const radioButtons = document.querySelectorAll('input[name="kg"]');
+        radioButtons.forEach(button => {
+            button.addEventListener('change', updateTotalPrice);
+        });
+
+        function updateTotalPrice() {
+            const selectedKg = document.querySelector('input[name="kg"]:checked').value;
+            const total = cakePrice * selectedKg;
+            document.getElementById('totalPrice').textContent = `Total Price: ₹${total}`;
+        }
+
+        // Handle form submission
+        document.getElementById('orderButton').addEventListener('click', () => {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const selectedKg = document.querySelector('input[name="kg"]:checked').value;
+
+            // Validate fields
+            if (!name || !phone) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const totalPrice = cakePrice * selectedKg;
+            const message = `
+                image:${cakeImage}
+                Name: ${name}
+                Phone: ${phone}
+                Cake: ${cakeName}
+                Weight: ${selectedKg} Kg
+                Total Price: ₹${totalPrice}
+            `;
+
+            // Encode the message for WhatsApp
+            const whatsappUrl = `https://wa.me/9656634893 ?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+
+    
+</body></he

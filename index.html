@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Baking Point</title>
+
+    <!-- swiper link  -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- cdn icon link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- custom css file  -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- header section start here  -->
+    <header class="header">
+        <div class="logoContent">
+            <a href="#" class="logo"><img src="images/logo.png" alt=""></a>
+            <h1 class="logoName">The Baking Point</h1>
+        </div>
+
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#product">product</a>
+            <!-- <a href="#blogs">blogs</a> -->
+            <!-- <a href="#review">review</a> -->
+            <a href="#contact">contact</a>
+        </nav>
+
+        <div class="icon">
+            <i class="fas fa-search" id="search"></i>
+            <i class="fas fa-bars" id="menu-bar"></i>
+        </div>
+
+        <div class="search">
+            <input type="search" placeholder="search...">
+        </div>
+    </header>
+    <!-- header section end here  -->
+
+    <!-- home section start here  -->
+    <section class="home" id="home">
+        <div class="homeContent">
+            <h2>Delicious Cake for Everyone </h2>
+            <p>Make your moments extra special with Baking Point Mannuvayalil! Indulge in the finest cakes and treats, crafted with love to sweeten every celebration</p>
+            <div class="home-btn">
+                <a href="#"><button>see more</button></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- home section end here  -->
+
+    <!-- product section start here  -->
+    <section class="product" id="product">
+        <div class="heading" style="text-align: center; margin-bottom: 20px;">
+            <h2>Our Exclusive Products</h2>
+        </div>
+        <div class="product-grid">
+            <!-- Dynamic content will be added here -->
+        </div>
+    </section>
+    
+    <style>
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+    
+        @media (max-width: 1024px) {
+            /* Tablet view: 2 items per row */
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    
+        @media (max-width: 768px) {
+            /* Mobile view: 1 item per row */
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    
+    
+
+
+    <section class="newsletter" style="text-align: center; background-color: #333; padding: 30px; border-radius: 10px;">
+        <h3 style="color: white; font-size: 1.8rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase;">
+            Looking for a website/ mobile app for your business?
+        </h3>
+        <a href="https://xelofast.com" target="_blank">
+            <button style="background-color: white; color: #333; font-size: 1.2rem; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; text-transform: uppercase;">
+                Contact Us
+            </button>
+        </a>
+    </section>
+    
+    
+
+
+    <footer class="footer" id="contact">
+        <div class="box-container">
+            <div class="mainBox">
+                <div class="content">
+                    <!-- <a href="#"><img src="images/logo.png" alt=""></a> -->
+                    <h1 class="logoName"> The Baking Point</h1>
+                </div>
+
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta accusamus maxime quod.</p>
+
+            </div>
+            <div class="box">
+                <h3>Quick link</h3>
+                <a href="#"> <i class="fas fa-arrow-right"></i>Home</a>
+                <a href="#"> <i class="fas fa-arrow-right"></i>product</a>
+                <!-- <a href="#"> <i class="fas fa-arrow-right"></i>blogs</a>
+                <a href="#"> <i class="fas fa-arrow-right"></i>review</a> -->
+                <a href="#"> <i class="fas fa-arrow-right"></i>contact</a>
+
+            </div>
+            <div class="box">
+                <h3>Extra link</h3>
+                <a href="#"> <i class="fas fa-arrow-right"></i>Account info</a>
+                <a href="https://xelofast.com/"> <i class="fas fa-arrow-right"></i>order item</a>
+                <!-- <a href="#"> <i class="fas fa-arrow-right"></i>privacy policy</a>
+                <a href="#"> <i class="fas fa-arrow-right"></i>payment method</a> -->
+                <a href="https://xelofast.com/"> <i class="fas fa-arrow-right"></i>our  services</a>
+            </div>
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="#"> <i class="fas fa-phone"></i>+91 9656634893 </a>
+                <a href="#"> <i class="fas fa-envelope"></i>@the_baking_point </a>
+
+            </div>
+
+        </div>
+        <div class="share">
+            <a href="https://xelofast.com/" class="fab fa-facebook-f"></a>
+            <a href="https://xelofast.com/" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="https://xelofast.com/" class="fab fa-linkedin"></a>
+            <a href="https://xelofast.com/" class="fab fa-pinterest"></a>
+        </div>
+        <div class="credit">
+            created by <span>Xelofast</span> |all rights reserved ! 
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+    <!-- swiper js link  -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- custom js file  -->
+    <script type="module" src="index.js" defer></script>
+
+
+</body>
+
+</html>
